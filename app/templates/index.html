@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAT Inquiry Keyword to PDF</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>
+            <span class="title-line1">CAT Inquiry</span><br>
+            <span class="title-line2">Keyword to PDF</span>
+        </h2>
+        <form method="POST">
+            <textarea name="inquiry" placeholder="Paste customer inquiry here..."></textarea>
+            <button type="submit">Scan</button>
+        </form>
+        {% if results %}
+        <div class="results">
+            <h3>Extracted Keywords & Mappings</h3>
+            <ul>
+                {% for item in results %}
+                <li><strong>{{ item.keyword }}</strong>: <strong>{{ item.mapping }}</strong></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
