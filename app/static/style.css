@@ -26,6 +26,7 @@ h2 {
 .title-line2 {
     display: block;
     text-align: center;
+    text-transform: uppercase;
 }
 
 textarea {
@@ -41,15 +42,17 @@ textarea {
 }
 
 button {
-    margin-top: 12px;
-    padding: 14px 28px;
-    font-size: 16px;
+    margin-top: 20px;
+    padding: 20px 42px;
+    font-size: 18px;
     background: #1e1e1e;
     color: #ffffff;
     border: 4px solid violet;
     font-family: sans-serif;
     cursor: pointer;
-    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     clip-path: polygon(
         10% 100%, 0% 50%, 10% 0%, 20% 15%,
         30% 5%, 40% 0%, 50% 10%, 60% 0%,
@@ -85,4 +88,53 @@ button:hover {
 
 .results li {
     margin-bottom: 10px;
+}
+.cat-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    transition: transform 0.2s ease;
+}
+
+.cat-button:hover svg path {
+    fill: violet;
+    stroke: #1e1e1e;
+}
+
+.cat-button:hover text {
+    fill: #1e1e1e;
+}
+.paw-button:focus {
+    outline: none;
+}
+
+.paw-button svg:focus {
+    outline: none;
+}
+.paw-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.paw-button:focus {
+    outline: none;
+}
+
+.paw-icon {
+    width: 100px;
+    height: auto;
+    transition: filter 0.2s ease;
+    filter: drop-shadow(0 0 4px violet);
+}
+
+.paw-button:hover .paw-icon {
+    filter: drop-shadow(0 0 4px white);
 }

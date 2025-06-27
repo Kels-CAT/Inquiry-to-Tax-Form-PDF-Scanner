@@ -1,31 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CAT Inquiry Keyword to PDF</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>CAT Inquiry Keyword to PDF</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+  body {
+    background-color: #000000;
+    color: #FFD700;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    margin: 0;
+    padding: 2rem;
+  }
+
+  h2, h3, label {
+    color: #FFD700;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    background-color: #111111;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+  }
+
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #FFD700;
+    background-color: #1c1c1c;
+    color: #FFD700;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+  }
+
+  .round-button {
+    background-color: #6c63ff;
+    border: none;
+    color: white;
+    padding: 12px 36px;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 1rem;
+  }
+
+  .round-button:hover {
+    background-color: #5a54d1;
+  }
+
+  .results ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .results li {
+    background-color: #1c1c1c;
+    border: 1px solid #FFD700;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+</style>
+
 </head>
 <body>
-    <div class="container">
-        <h2>
-            <span class="title-line1">CAT Inquiry</span><br>
-            <span class="title-line2">Keyword to PDF</span>
-        </h2>
-        <form method="POST">
-            <textarea name="inquiry" placeholder="Paste customer inquiry here..."></textarea>
-            <button type="submit">Scan</button>
-        </form>
-        {% if results %}
-        <div class="results">
-            <h3>Extracted Keywords & Mappings</h3>
-            <ul>
-                {% for item in results %}
-                <li><strong>{{ item.keyword }}</strong>: <strong>{{ item.mapping }}</strong></li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
+  <div class="container">
+    <h2>
+      <span class="title-line1">CAT Inquiry</span><br>
+      <span class="title-line2">Keyword to PDF</span>
+    </h2>
+
+    <form method="POST">
+      <label for="inquiry">Paste customer inquiry here:</label><br>
+      <textarea name="inquiry" id="inquiry" placeholder="Paste customer inquiry here..." rows="4" cols="60" required></textarea><br><br>
+      <button type="submit" class="round-button">Scan</button>
+    </form>
+
+    {% if results %}
+    <div class="results">
+      <h3>Extracted Keywords & Mappings</h3>
+      <ul>
+        {% for item in results %}
+        <li><strong>{{ item.keyword }}</strong>: <strong>{{ item.mapping }}</strong></li>
+        {% endfor %}
+      </ul>
     </div>
+    {% endif %}
+  </div>
 </body>
 </html>
+
